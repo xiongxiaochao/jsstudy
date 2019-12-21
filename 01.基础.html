@@ -1,0 +1,1129 @@
+<!-- 注意1：等于号（= ）是赋值  把右边的值赋值给左边    (==)是等于   就是判断2边是否相等   (===) 用来检测两个操作数是否严格相等  如果类型不同，其结果就是不等-->
+    <!-- 注意2： 直接拿div1在低版本是不允许的，必须要使用 document.getElementById这几种方法-->
+    <!-- 注意3： 属性： input的属性就是“宽 高 颜色等等    人的属性是姓名 身高 性别”    (任何标签的任何属性，也都可以修改)-->
+    <!-- 注意4： 编写js的流程
+            布局： HTML + CSS
+            属性： 确定要修改那些属性（下面的属性是display）
+            事件： 确定用户做那些操作(产品设计)
+            编写JS： 在事件中，用JS 来修改页面元素的样式
+    -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文档</title>
+    <style>
+        #div1 {width: 200px; height: 100px; background: #cccccc; border: 1px solid #999; display: none;}
+    </style>
+</head>
+<body>
+    
+    <input type="checkbox" onmouseover="document.getElementById('div1').style.display='block'"; onmouseout="div1.style.display='none'">                             
+    <div id="div1">
+        为了您的信息安全。。。。
+    </div>
+</body>
+</html> -->
+
+<!-- 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+
+<!-- 学习2 -->
+<!-- 注意1: 
+            变量：使用场景（含义：就是给别人取“别名”）
+                var oDiv = document.getElementById('div1')
+                oDiv.style.width = '300px'; -->
+<!-- 注意2：
+            函数的格式：
+                    function 函数名()     //定义
+                    {
+                        代码
+                    } 
+                    函数名()             //调用
+                -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的使用</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+    <script>
+        function toGreen() {
+            document.getElementById('div1').style.width = '300px';
+            document.getElementById('div1').style.height = '300px';
+            document.getElementById('div1').style.background = 'green';
+        }
+
+        function toRed(){
+            document.getElementById('div1').style.width = '200px';
+            document.getElementById('div1').style.height = '200px';
+            document.getElementById('div1').style.background = 'red';
+        }
+    </script>
+</head>
+<body>
+    <div id="div1" onmouseover="toGreen()" onmouseout="toRed()"></div>
+</body>
+</html>  -->
+
+
+<!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习3 -->
+<!-- if(预报有雨){
+    带伞
+}else{
+    不带伞
+} -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 200px;
+            background: #cccccc;
+            display: none;
+        }
+    </style>
+    <script>
+        function showHide() {
+            var oDiv = document.getElementById('div1');
+
+            if(oDiv.style.display == 'block') 
+            {
+                oDiv.style.display = 'none';
+            }
+            else
+            {
+                oDiv.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="显示隐藏" onclick="showHide()" />
+    <div id="div1"></div>
+</body>
+</html> -->
+
+
+
+
+
+<!-- 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习4 -->
+<!-- a的使用 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <a href="javascript: alert('a')">链接</a>
+    <a href="javascript:">链接</a>
+</body>
+</html> -->
+
+
+
+
+<!-- 888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习5 -->
+<!-- 注意classname的用法 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        .box{
+            background: red;
+        }
+    </style>
+    <script>
+        function toRed() {
+            var oDiv = document.getElementById('div1');
+            oDiv.className = 'box';   //class是关键字，所以必须写成className
+        }  
+    </script>
+</head>
+<body>
+    <input type="button" value="变红" onclick="toRed()" />
+    <div id="div1"></div>
+</body>
+</html> -->
+
+
+
+
+<!-- 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习6 -->
+<!-- 函数传参 -->
+<!-- 注意1：函数传参： 参数就是占位符(什么时候传参---函数里定不下来的东西) -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>传参</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+    <script>
+        // function toGreen() {
+        //     var oDiv = document.getElementById('div1');
+
+        //     oDiv.style.background = 'green'; 
+        // }
+
+        // function toYellow() {
+        //     var oDiv = document.getElementById('div1');
+
+        //     oDiv.style.background = 'yellow'; 
+        // }
+
+        // function toBlack() {
+        //     var oDiv = document.getElementById('div1');
+
+        //     oDiv.style.background = 'black'; 
+        // }
+        function setColor(color) {
+            var oDiv = document.getElementById('div1');
+
+            oDiv.style.background = color;
+        }
+    </script>
+</head>
+<body> -->
+    <!-- <input type="button" value="变" onclick="toGreen()">
+    <input type="button" value="变黄" onclick="toYellow()">
+    <input type="button" value="变黑" onclick="toBlack()"> -->
+    <!-- <input type="button" value="变" onclick="setColor('green')">
+    <input type="button" value="变黄" onclick="setColor('yellow')">
+    <input type="button" value="变黑" onclick="setColor('black')">
+    <div id="div1"></div>
+</body>
+</html> -->
+
+
+
+<!-- 传参的基本含义 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function show(a, b) {
+            alert(a+b);
+        }
+
+        show(5, 12);
+    </script>
+</head>
+<body>
+    
+</body>
+</html> -->
+
+
+
+
+<!-- 88888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习7 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+    <script>
+        function toWidth() {
+            var oDiv = document.getElementById('div1');
+
+            oDiv.style.width = '400px';
+        }
+
+        function toHeight() {
+            var oDiv = document.getElementById('div1');
+
+            oDiv.style.height = '400px';
+        }
+
+        function toGreen() {
+            var oDiv = document.getElementById('div1');
+
+            oDiv.style.background = 'green';
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="变宽" onclick="toWidth()">
+    <input type="button" value="变高" onclick="toHeight()">
+    <input type="button" value="变" onclick="toGreen()">
+    <div id="div1"></div>
+</body>
+</html> -->
+
+<!-- oTxt.value = 'fas;lkfjsa;lfjs;a';    //第一种操作属性的方法（用点（.表示的））
+            // oTxt['value'] = 'safjslkfjsafsjl';  //第二种操作属性的方法   a里面可以是字符串
+            // oTxt[a] = 'safjslkfjsafsjl';       //第二种操作属性的方法    b可以用变量存起来
+            oTxt[name] = 'jasiofjsfjspa';         //第二种操作属性的方法    c参数的写法   可以改变value的类型 （value =》 text） -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function setText (name) {
+            var oTxt = document.getElementById('txt1');
+            
+            
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="txt1" />
+    <input type="button" value="改变文字" onclick="setText('value')" />
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+    <script>
+        function setStyle(name, value) {
+            var oDiv = document.getElementById('div1');
+            oDiv.style.name = value;
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="变宽" onclick="setStyle('width', '400px')">
+    <input type="button" value="变高">
+    <input type="button" value="变绿">
+    <div id="div1"></div>
+</body>
+</html> -->
+
+
+
+
+<!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习8： -->
+<!-- 注意1:
+        字面量（常量）: 看到东西，自然之道是什么   eg：12、 'abc'
+        变量： var a =?   (字符串   {变量和参数是不需要引号的})
+     -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        alert(abc)  //必须加引号，如果不加。会变成变量对待   因为没有定义：会报错没有定义  abc is not defined
+    </script>
+</body>
+</html> -->
+
+
+
+<!-- **********88888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习9 -->
+<!-- 注意1： 注意优先级 -->
+<!-- 注意2： style加的是行类样式 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        function toRed(){
+            var oDiv = document.getElementById('div1');
+
+            oDiv.style.background = 'red'
+        }
+
+        function toGreen(){
+            var oDiv = document.getElementById('div1');
+
+            oDiv.style.background = 'green'
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="变红" onclick="toRed()">
+    <input type="button" value="变绿" onclick="toGreen()">
+    <div id="div1"></div>
+</body>
+</html> -->
+
+
+
+<!-- 888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习10 -->
+<!-- 注意1：
+    function 名字(){
+        ......
+    }
+    oBtn.onclick=名字
+
+
+    注意2：
+    oBtn.onclick=function(){
+        ...........
+    };
+
+    注意3：
+    window.onload = function () {
+        oBtn.onclick = function () {
+            alert('a');
+        };
+    }
+-->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn1" />
+    <script>
+        var oBtn=document.getElementById('btn1');
+
+        function abc() 
+        {
+            alert('a');
+        }
+        oBtn.onclick=abc;
+    </script>
+</body>
+</html> -->
+
+
+
+
+<!-- 888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习11 -->
+<!-- 注意1：
+        getElementsByTagName获取节点的方法(数组)
+-->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border: 1px solid #cccccc;
+        }
+    </style>
+
+    <script>
+        window.onload=function (){
+            var aDiv = document.getElementsByTagName('div');
+            for(var i = 0; i < aDiv.length; i++)    //4  变成  aDiv.length  没有写死
+            {
+                aDiv[i].style.background = 'red';
+            }
+
+            // aDiv.style.background = "red" //  错误：  只可以对一个元素进行改变
+            // aDiv[0].style.background='red';  //通过对下标的写法
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html> -->
+
+
+
+
+<!-- 888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习11 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var i = 0;           //1 .初始化
+
+        while(i<5){         // 2.条件
+
+            alert(i);       //3.语句
+
+            i = i+1;        // 4.自增
+
+        }
+
+        /*
+            for(初始化；条件；自增)
+            {
+                语句
+            }
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html> -->
+
+
+
+
+<!-- 888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习12  全选  反选 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var oBtn1 = document.getElementById('btn1');
+            var oBtn2 = document.getElementById('btn2');
+            var oBtn3 = document.getElementById('btn3');
+            var oDiv = document.getElementById('div1');
+            var aCh = oDiv.getElementsByTagName('input');
+
+            oBtn1.onclick=function () {
+                for(var i = 0; i < aCh.length; i++){
+
+                    aCh[i].checked=true;
+
+                }
+                
+            }
+
+            oBtn2.onclick=function () {
+                for(var i = 0; i < aCh.length; i++){
+
+                    aCh[i].checked=false;
+
+                }
+                
+            }
+
+            oBtn3.onclick=function () {
+                for(var i = 0; i < aCh.length; i++){
+                    if(aCh[i].checked==true){
+
+                        aCh[i].checked=false;
+
+                    }
+                    else{
+                        aCh[i].checked=true;
+                    }
+                }
+                
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="全选" id="btn1"/><br>
+    <input type="button" value="不选" id="btn2"/><br>
+    <input type="button" value="反选" id="btn3"/><br>
+    <div id="div1">
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+        <input type="checkbox" /><br>
+    </div>
+</body>
+</html> -->
+
+
+
+<!-- 888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习12  选项卡 -->
+<!-- 注意1：
+        this: 当前发生事件的元素
+     注意2：
+        通过html添加标签，浏览器是不认可的。  而通过js添加属性是可以的（面向对象会讲的）
+ -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1 .active{
+            background: yellow;
+        }
+        #div1 div{
+            width: 200px;
+            height: 200px;
+            background: #cccccc;
+            border: 1px solid #999999;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function (){
+            var oDiv = document.getElementById('div1');
+            var aBtn = oDiv.getElementsByTagName('input');
+            var aDiv = oDiv.getElementsByTagName('div');
+
+            for(var i = 0; i < aBtn.length; i++) {
+                aBtn[i].index=i;
+                aBtn[i].onclick = function () {
+                    for(var i = 0; i<aBtn.length; i++){
+                        aBtn[i].className='';
+                        aDiv[i].style.display = 'none';
+                    }
+                    this.className = 'active';
+                    aDiv[this.index].style.display='block';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <input class="active" type="button" value="教育">
+        <input type="button" value="培训">
+        <input type="button" value="招生">
+        <input type="button" value="出国">
+        <div style="display: block;">11111</div>
+        <div>22222</div>
+        <div>33333</div>
+        <div>44444</div>
+    </div>
+</body>
+</html> -->
+
+
+
+<!-- 888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习12  月历 -->
+<!-- 注意1：
+        innerHTML的使用
+     -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 150px;
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            var oTxt = document.getElementById('txt1');
+            var oBtn = document.getElementById('btn1');
+            var oDiv = document.getElementById('div1');
+
+            oBtn.onclick = function(){
+                oDiv.innerHTML = oTxt.value;
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="txt1" />
+    <input type="button" id="btn1" value="设置文字" />
+    <div id="div1"></div>
+</body>
+</html> -->
+
+
+
+<!-- 月历案例 -->
+<!-- 注意：
+            没有写完整 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('tab');
+            var aLi = oDiv.getElementsByTagName('li');
+            var oTxt = oDiv.getElementsByTagName('div')[0];
+
+            for(var i=0; i<aLi.length; i++) {
+                aLi[i].onmouseover = function (){
+                    
+                    for(var i=0; i<aLi.length; i++){
+                        aLi[i].className = '';
+                    }
+                    this.className = 'active';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="tab" class="calendar">
+        <ul>
+            <li class="active"><h2>1</h2><p>JAN</p></li>
+            <li><h2>2</h2><p>FER</p></li>
+            <li><h2>3</h2><p>MAR</p></li>
+            <li><h2>4</h2><p>APR</p></li>
+            <li><h2>5</h2><p>MAY</p></li>
+            <li><h2>6</h2><p>JUN</p></li>
+            <li><h2>7</h2><p>JUL</p></li>
+            <li><h2>8</h2><p>AUG</p></li>
+            <li><h2>9</h2><p>SEP</p></li>
+            <li><h2>10</h2<p>OCT</p>></li>
+            <li><h2>11</h2<p>NOV</p>></li>
+            <li><h2>12</h2<p>DEC</p>></li>
+        </ul>
+
+        <div class="text">
+            <h2>1月活动</h2>
+            <p>快过年了，大家可以商量着去哪玩吧··</p>
+        </div>
+    </div>
+</body>
+</html> -->
+
+
+
+<!-- 888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习13  基础 -->
+<!-- ECMAScript:    翻译             核心        解释器
+
+
+DOM         Document Object Model        HTML     document
+
+
+BOM         Browser Object Model         浏览器    window -->
+
+
+<!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+
+<!-- ECMA       几乎没有兼容性问题
+DOM        有一些操作不兼容
+BOM        没有兼容问题(完全不兼容) -->
+
+<!-- 注意：基本类型的种类 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 12;
+        // document.writeln(typeof a);           //number
+        
+        a = 'gjojgodjfdjfd';
+        // document.writeln(typeof a );         //string
+
+        a=true;
+        // document.writeln(typeof a );         //boolean
+
+        a=function (){
+            document.writeln('jfaklfls');
+        }
+        // document.writeln(typeof a);             //function
+
+        a=document;
+        // document.writeln(typeof a )             //object
+
+        var b;
+        // document.writeln(typeof b);             //undefined
+        //1.真的没有定义
+        //2.虽然定义，没有给东西
+    </script>
+</body>
+</html> -->
+
+
+
+<!-- 注意：类型的转化 -->
+<!-- 列子1： -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var oTxt1 = document.getElementById('txt1');
+            var oTxt2 = document.getElementById('txt2');
+            var oBtn = document.getElementById('btn1');
+
+            oBtn.onclick = function () {
+                // alert(typeof oTxt1.value);
+                // '12' + '56'
+                // alert(oTxt1.value+oTxt2.value);
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="txt1" type="text" />
+    <input type="txt2" type="text" />
+    <input type="btn1" type="button" value="求和" />
+</body>
+</html> -->
+
+<!-- 列子2 -->
+<!-- 注意1：
+            parseInt可以把字符串改变成数字
+            parseInt打印出来的都是整数  alert(parseInt(3.5))=3
+            parseInt会从左向右扫描，看到不是数字的就返回
+            parseInt如果从左向右没有找到数字，那么会出现NAN（非数字） 
+            NaN和NaN不相等   
+            判断一个结果是不是NaN可以用（isNaN进行判断）
+            下面是NaN与parseInt配合
+            parseFloat可以把字符串改成数字  可以是小数，也可以是整数     -->
+
+    <!-- 注意2：
+            显示类型转换（强制类型转换）
+                eg: parseInt()   parseFloat()
+                    NaN的意义和检测
+            隐式类型转换
+                ==  ===
+                减法
+            -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var oTxt1 = document.getElementById('txt1');
+            var oTxt2 = document.getElementById('txt2');
+            var oBtn = document.getElementById('btn1');
+
+            oBtn.onclick = function () {
+                var n1 = parseInt(oTxt1.value);
+                var n2 = parseInt(oTxt2.value);
+
+                if(isNaN(n1)) {
+                    alert('您输入的第一个数字有误');
+                }
+                else if(isNaN(n2)) {
+                    alert('您输入的第二个数字有误')
+                }else{
+                    alert(n1+n2);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input id="txt1" type="text" />
+    <input id="txt2" type="text" />
+    <input id="btn1" type="button" value="求和" />
+</body>
+</html> -->
+
+
+<!-- 88888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 隐式转换 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // var a = 5;
+        // var b = '5';
+
+        // alert(a==b);    //true  先转换类型，然后比较
+        // alert(a===b);   //false  不转换类型，直接比
+        var a = '12';
+        var b = '5';
+        alert(a+b);        //1.字符串链接     2.数字相加
+        alert(a-b);        //1.数字相减
+    </script>
+</head>
+<body>
+    
+</body>
+</html> -->
+
+
+<!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 闭包 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        //子函数可以使用父函数的局部变量
+        function aaa () {
+            var a = 12;
+            function bbb(){
+                alert(a);
+            }
+            bbb();
+        }
+        aaa();
+    </script>
+</head>
+<body>
+</body>
+</html> -->、
+
+
+<!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 运算符：
+        算术： +加、 -减、 *乘、 /除、 %取模
+            eg: 隔行变色、秒转时间
+        赋值： =、 +=、 -=、 *=、 /=、 %=
+        关系： <、 >、 <=、 >=、 ==、 ===、 !=、 !==
+        逻辑： &&与、 ||或、 !否
+            eg: 全选与反选
+        运算符优先级： 括号
+    -->
+    <!-- 案例：隔行变色、秒转时间 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var aLi = document.getElementsByTagName('li');
+
+            for(var i=0;i<aLi.length; i++){
+
+                if(i%2==0){
+
+                    aLi[i].style.background = '#ccc';
+                }else{
+                    aLi[i].style.background = '';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html> -->
+
+
+<!-- 案例：换算成分秒 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var s = 156;
+
+        alert(parseInt(s/60) + '分' + s%60 + '秒')
+    </script>
+</head>
+<body>
+    
+</body>
+</html> -->
+
+
+
+<!-- 程序流程控制：
+            判断： if、 switch、 ？：
+            循环： while、 for
+            跳出： break、 continue
+            什么是真、什么是假：
+                真： true、 非零数字、 非空字符串、 非空对象
+                假： false、数字零、 空字符串、 空对象、 underfined
+-->
+
+<!-- if(条件1){
+    语句1
+}else if(条件2){
+    语句2
+}else{
+    语句n
+} -->
+
+<!-- 
+    switch(变量){
+        case 值1：
+                语句1
+                break;
+        case 值2：
+                语句2
+                break
+        。。。。。。。。。。。。
+        default:
+            语句n
+    }
+ -->
+ <!-- <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+     <script>
+         var name = 'abc';
+         var sex = '男'
+
+         switch(sex) {
+            case '男':
+                alert(name+ '先生，你好');
+            case '女':
+                alert(name+'女士，你好');
+            default:
+                alert(name+'你好');
+         }
+     </script>
+ </head>
+ <body>
+     
+ </body>
+ </html> -->
+
+ <!-- break 与 continue的区别 -->
+ <!-- <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Document</title>
+     <script>
+         for(var i=0; i<5; i++){
+             if(i==2){
+                // break;           //整个循环中断了
+                //  continue;    //本次循环中断了
+             }
+         }
+     </script>
+ </head>
+ <body>
+     
+ </body>
+ </html> -->
+
+
+
+ <!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+ <!-- Json:
+            什么是Json
+            Json和数组
+            Json和for in
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var json = {a: 12, b: 5, c: 7};
+        var arr = [12, 5, 7];
+
+        //下标不同、一个是字符串，一个是数字1
+        // alert(json['a']);
+        // alert(arr[0])
+
+        // alert(json.length);   //没有这个属性
+        // alert(arr.length)
+
+        // for(var i=0; i<arr.length; i++){
+        //     alert('第'+i+'个东西：'+arr[i]);
+        // }
+
+        // for(var i in arr){
+        //     alert('第'+i+'个东西：'+arr[i]);
+        // }
+
+        for(var i in json){
+            alert('第'+ '个东西：'+ json[i]);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+ 

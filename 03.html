@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            border: 1px solid #000;
+            width: 400px;
+        }
+    </style>
+    <script type="text/javascript">
+        function change() {
+            var all = document.getElementById("checkbox_all");
+            var cb = document.getElementsByName("personid")
+
+            if(all.checked){
+                for(var i = 0; i < cb.length; i++){
+                    cb[i].checked = true;
+                }
+            }else{
+                for(var i = 0; i < cb.length; i++){
+                    cb[i].checked = false;
+                }
+            }
+        }
+
+        function reverse(){
+            var cb = document.getElementsByName("personid")
+            for(var i = 0; i < cb.length; i++) {
+                if(cb[i].checked) {
+                    cb[i].checked = false;
+                }else{
+                    cb[i].checked = true;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>全选<input type="checkbox" id="checkbox_all" onclick="change()"></th>
+            <th>看到</th>
+            <th>开始看</th>
+            <th>格兰芬多</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="personid"></td>
+            <td>张三</td>
+            <td>10</td>
+            <td>1545646445646</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="personid"></td>
+            <td>李四</td>
+            <td>20</td>
+            <td>14564564654646</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="personid"></td>
+            <td>王五</td>
+            <td>30</td>
+            <td>54545454644464</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="personid"></td>
+            <td>赵六</td>
+            <td>40</td>
+            <td>1161465465343636</td>
+        </tr>
+    </table>
+    <input type="button" value="反选" onclick="reverse()">
+</body>
+</html>
