@@ -1093,7 +1093,7 @@ BOM        没有兼容问题(完全不兼容) -->
             Json和数组
             Json和for in
 -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1125,5 +1125,231 @@ BOM        没有兼容问题(完全不兼容) -->
 <body>
     
 </body>
+</html> -->
+
+
+
+
+
+
+ <!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+ <!-- 学习13 -->
+ <!-- 函数返回值: 函数的执行结果 可以没有return  一个函数应该只返回一种类型的值 -->
+ <!-- <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Document</title>
+     <script>
+         function show() {
+             return 12;
+         }
+         var a = show();
+         alert(a);
+     </script>
+ </head>
+ <body>
+     
+ </body>
+ </html> -->
+
+
+ <!-- 函数传参 -->
+ <!-- 可变参(不定参)：arguments
+            参数的个数可变，参数数组 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function sum(a, b){
+            return a+b;
+        }
+        alert(sum(12,6));
+    </script>
+</head>
+<body>
+    
+</body>
+</html> -->
+
+
+<!-- arguments   可变参   不定参-->
+<!-- 求和例子： 求所用参数的和 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function sum() {
+
+            //alert(arguments.length);
+            // alert(arguments[0]);
+            var result = 0;
+            for(var i=0; i<arguments.length; i++){
+                result += arguments[i];
+            }
+            return result;
+        }
+
+        alert(sum(12, 6, 8));
+    </script>
+</head>
+<body>
+    
+</body>
+</html> -->
+
+
+<!-- css函数
+        css(oDiv,'width')   获取样式
+        css(oDiv,'width', '200px')  设置样式 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function css(obj, name, value]) {
+            if(arguments.length == 2){
+                return arguments[0].style[arguments[1]];
+            }else{
+                arguments[0].style[arguments[1]] = arguments[2];
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1" style="width: 200px; height: 200px; background: red;"></div>
+</body>
+</html> -->
+
+
+<!-- 取非行间样式(不能用来设置)
+        obj.currentStyle[attr]
+        getComputedStyle(obj,false)[attr]
+-->
+<!-- 注意1：style只操作行简样式  js文件里面是获取不到的
+            currentStyle是用来获取非行间样式  （但是只兼容IE浏览器）
+            getComputedStyle(oDiv,false).width  (只是在Chrome、FF可以使用)
+        
+            解决办法： if(oDiv.currentStyle){
+                alert(oDiv.currentStyle.width)
+            }else{
+                alert(getComputedStyle(oDiv,false).width);
+            }
+
+            封装函数：
+                function getStyle(obj,name){
+                    if(obj.currentStyle){
+                        return obj.currentStyle[name];
+                    }else{
+                        return getComputedStyle(obj, false)[name];
+                    }
+                }
+
+    注意2： 复合样式： background、border
+            单一样式： width、 height、position
+        -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+            alert(oDiv.currentStyle.width)
+        }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html> -->
+
+
+<!-- 数组 -->
+<!-- 注意1：定义数组的方式 -->
+<!-- 注意2：数组的属性：length
+                        既可以获取，又可以设置 -->
+<!-- 注意3：数组的方法：
+            添加
+                push(元素)，从尾部添加
+                unshift(元素)，从头部添加
+            删除
+                pop()，从尾部删除
+                shift(),从头部删除
+            排序
+                sort(比较函数)，排序一个数组
+                    排序一个字符串数组
+                    排序一个数字数组
+            转换类
+                concat(数组2)
+                    连续两个数组
+                join（分隔符）
+                    用分隔符，组合数组元素，生成字符串
+                    字符串split
+            插入、删除
+                splice
+                    solice(开始，长度，元素...)
+                    先删除，后插入
+                删除
+                    splice(开始，长度)
+                插入
+                    splice(开始，0，元素...)
+                替换
+                    aplice(开始,位置元素,元素，元素...) -->
+<!-- <!DOCTYPE html>
+<html lang="en">tai
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script> 
+        // var a = [1,2,3];  //定义数组的第一种方法
+        var a = new Array(1,2,3); //定义数组的第二种方法
+        alert(a);
+    </script>
+</head>
+<body>
+    
+</body>
+</html> -->
+
+<!-- sort的使用 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var arr = [12, 8, 99, 19, 112];
+        arr.sort(function(n1,n2){
+            return n1 - n2;
+            // if(n1<n2){
+            //     return -1;
+            // }else if(n1>n2){
+            //     return 1;
+            // }else{
+            //     return 0;
+            }
+        })
+        alert(arr);
+    </script>
+</head>
+<body>
+    
+</body>
 </html>
- 
