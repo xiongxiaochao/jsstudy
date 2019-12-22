@@ -933,7 +933,7 @@ BOM        没有兼容问题(完全不兼容) -->
 </head>
 <body>
 </body>
-</html> -->、
+</html> -->
 
 
 <!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
@@ -1729,8 +1729,8 @@ BOM        没有兼容问题(完全不兼容) -->
 </html> -->
 
 
-
-<!DOCTYPE html>
+<!-- appendChild和insertBefore的使用 -->
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1748,6 +1748,11 @@ BOM        没有兼容问题(完全不兼容) -->
 
                 //父级.insertBefore(子节点，在谁之前)
                 // oUl.insertBefore(oLi, aLi[0]);
+                if(aLi.length>0) {
+                    oUl.insertBefore(oLi, aLi[0]);
+                }else{
+                    oUl.appendChild(oLi);
+                }
                 //父级.appendChild(子节点)；
                 // oUl.appendChild(oLi);
             }
@@ -1758,5 +1763,562 @@ BOM        没有兼容问题(完全不兼容) -->
     <input type="text" id="txt1">
     <input id="btn1" type="button" value="创建li">
     <ul id="ul1"></ul>
+</body>
+</html> -->
+
+
+
+<!--父级.removeChild(子节点)  -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var aA = document.getElementsByTagName('a');
+            var oUl = document.getElementById('ul1');
+
+            for(var i=0; i<aA.length; i++){
+                aA[i].onclick = function () {
+                    oUl.removeChild(this.parentNode);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul id="ul1">
+        <li>afjsafj<a href="javascript:;">删除</a>></li>
+        <li>就发哦<a href="javascript:;">删除</a>></li>
+        <li>54431321<a href="javascript:;">删除</a>></li>
+        <li>上岛咖啡<a href="javascript:;">删除a>></li>
+        <li>国际快递给<a href="javascript:;">删除</a>></li>
+        <li>经过多个条件而排位<a href="javascript:;">删除</a>></li>
+        <li>可不会顺丰大概<a href="javascript:;">删除</a>></li>
+        <li>会更快速度过快<a href="javascript:;">删除</a>></li>
+    </ul>
+</body>
+</html>  -->
+
+
+<!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习16 表格应用
+        获取：
+            tBodies、 tHead、tFoot、rows、cells
+        隔行变色
+            鼠标移入高亮
+        添加、删除一行
+            DOM方法的使用
+
+
+        表格应用-2
+        搜索
+            版本1：基础版本-----字符串比较
+            版本2：忽略大小写---大小写转换
+            版本3：模糊搜索-----search的使用、
+            版本4：多关键词-----split
+            高亮显示、筛选
+
+        排序
+            移动Li
+            元素排序：转换----排序----插入
+-->
+<!-- 隔行变色 点击高亮 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var oTab = document.getElementById('tab1');
+            var oldColor = '';
+
+            // console.log(oTab.getElementsByTagName('tbody')[0].getElementsByTagName('tr')[1].getElementsByTagName('td')[1].innerHTML);
+            // console.log(oTab.tBodies[0].rows[1].cells[1].innerHTML);
+            for(var i=0; i<oTab.tBodies[0].rows.length; i++){
+                oTab.tBodies[0].rows[i].onmouseover = function () {
+                    oldColor = this.style.background;  //把原来的数据存起来
+                    this.style.background = 'green';
+                };
+                oTab.tBodies[0].rows[i].onmouseout = function () {
+                    this.style.background = oldColor;
+                }
+                if(i%2){
+                    oTab.tBodies[0].rows[i].style.background = '#ccc';
+                }else{
+                    oTab.tBodies[0].rows[i].style.background = '';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <table id="tab1" border="1" width="500">
+        <thead>
+            <td>ID</td>
+            <td>姓名</td>
+            <td>年龄</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Blue</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>张三</td>
+                <td>23</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>李四</td>
+                <td>28</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>王五</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>张伟</td>
+                <td>24</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html> -->
+
+
+<!-- 表格删除 添加 -->
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var oTab = document.getElementById('tab1');
+            
+            var oBtn = document.getElementById('btn1');
+            var oName = document.getElementById('name');
+            var oAge = document.getElementById('age');
+
+            oBtn.onclick = function () {
+                var oTr = document.createElement('tr');
+
+                var oTd = document.createElement('td');
+                oTd.innerHTML = oTab.tBodies[0].rows.length+1;
+                oTr.appendChild(oTd);
+
+                var oTd = document.createElement('td');
+                oTd.innerHTML = oName.value;
+                oTr.appendChild(oTd);
+
+                var oTd = document.createElement('td');
+                oTd.innerHTML = oAge.value;
+                oTr.appendChild(oTd);
+
+                oTab.tBodies[0].appendChild(oTr);
+            }
+        }
+    </script>
+</head>
+<body>
+    姓名：<input type="text" id="name" />
+    年龄：<input type="text" id="age" />
+    <input type="button" value="添加" id="btn1" />
+    <table id="tab1" border="1" width="500">
+        <thead>
+            <td>ID</td>
+            <td>姓名</td>
+            <td>年龄</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Blue</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>张三</td>
+                <td>23</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>李四</td>
+                <td>28</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>王五</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>张伟</td>
+                <td>24</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html> -->
+
+
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var oTab = document.getElementById('tab1');
+            
+            var oBtn = document.getElementById('btn1');
+            var oName = document.getElementById('name');
+            var oAge = document.getElementById('age');
+
+            var id = oTab.tBodies[0].rows.length+1;
+
+            oBtn.onclick = function () {
+                var oTr = document.createElement('tr');
+
+                var oTd = document.createElement('td');
+                oTd.innerHTML = id++;
+                oTr.appendChild(oTd);
+
+                var oTd = document.createElement('td');
+                oTd.innerHTML = oName.value;
+                oTr.appendChild(oTd);
+
+                var oTd = document.createElement('td');
+                oTd.innerHTML = oAge.value;
+                oTr.appendChild(oTd);
+
+                var oTd = document.createElement('td');
+                oTd.innerHTML = '<a href="javascript:;">删除</a>';
+                oTr.appendChild(oTd);
+
+                oTd.getElementsByTagName('a')[0].onclick = function () {
+                    oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+                };
+
+                oTab.tBodies[0].appendChild(oTr);
+            }
+        }
+    </script>
+</head>
+<body>
+    姓名：<input type="text" id="name" />
+    年龄：<input type="text" id="age" />
+    <input type="button" value="添加" id="btn1" />
+    <table id="tab1" border="1" width="500">
+        <thead>
+            <td>ID</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>操作</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Blue</td>
+                <td>27</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>张三</td>
+                <td>23</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>李四</td>
+                <td>28</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>王五</td>
+                <td>25</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>张伟</td>
+                <td>24</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html> -->
+
+<!-- 模糊搜索 -->
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var oTab = document.getElementById('tab1');
+            var oTxt = document.getElementById('name');
+            var oBtn = document.getElementById('btn1'); 
+
+            oBtn.onclick = function () {
+                for(var i = 0; i<oTab.tBodies[0].rows.length;i++){
+                    var sTab = oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+                    var sTxt = oTxt.value.toLowerCase();
+                    if(sTab.search(sTxt) != -1) {
+                        oTab.tBodies[0].rows[i].style.background = 'yellow';
+                    }else {
+                        oTab.tBodies[0].rows[i].style.background = '';
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    姓名：<input type="text" id="name" />
+    <input type="button" value="搜索" id="btn1" />
+    <table id="tab1" border="1" width="500">
+        <thead>
+            <td>ID</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>操作</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Blue</td>
+                <td>27</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>张三</td>
+                <td>23</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>李四</td>
+                <td>28</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>王五</td>
+                <td>25</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>张伟</td>
+                <td>24</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html> -->
+
+
+<!-- 模糊搜索 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var str = 'abcdef';
+
+        alert(str.search('g'))   //找到并且返回字符串出现的位置，如果没有找到返回-1
+    </script>
+</head>
+<body>
+    
+</body>
+</html> -->
+
+
+<!-- split -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var str = 'abc 123 ert';
+        var arr = str.split(' ');
+
+        alert(arr.length);
+    </script>
+</head>
+<body>
+    
+</body>
+</html> -->
+
+
+
+
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var oTab = document.getElementById('tab1');
+            var oTxt = document.getElementById('name');
+            var oBtn = document.getElementById('btn1'); 
+
+            oBtn.onclick = function () {
+                for(var i = 0; i<oTab.tBodies[0].rows.length;i++){
+                    var sTab = oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+                    var sTxt = oTxt.value.toLowerCase();
+                    var arr = sTxt.split(' ');
+
+                    oTab.tBodies[0].rows[i].style.background = '';
+
+                        for(var j = 0; j<arr.length; j++)
+                        {
+                            if(sTab.search(arr[j]) != -1) 
+                        {
+                            oTab.tBodies[0].rows[i].style.background = 'yellow';
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    姓名：<input type="text" id="name" />
+    <input type="button" value="搜索" id="btn1" />
+    <table id="tab1" border="1" width="500">
+        <thead>
+            <td>ID</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>操作</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Blue</td>
+                <td>27</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>张三</td>
+                <td>23</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>李四</td>
+                <td>28</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>王五</td>
+                <td>25</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>张伟</td>
+                <td>24</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html> -->
+
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var oTab = document.getElementById('tab1');
+            var oTxt = document.getElementById('name');
+            var oBtn = document.getElementById('btn1'); 
+
+            oBtn.onclick = function () {
+                for(var i = 0; i<oTab.tBodies[0].rows.length;i++){
+                    var sTab = oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+                    var sTxt = oTxt.value.toLowerCase();
+                    var arr = sTxt.split(' ');
+
+                    oTab.tBodies[0].rows[i].style.display = 'none';
+
+                        for(var j = 0; j<arr.length; j++)
+                        {
+                            if(sTab.search(arr[j]) != -1) 
+                        {
+                            oTab.tBodies[0].rows[i].style.display = 'block';
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    姓名：<input type="text" id="name" />
+    <input type="button" value="搜索" id="btn1" />
+    <table id="tab1" border="1" width="500">
+        <thead>
+            <td>ID</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>操作</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Blue</td>
+                <td>27</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>张三</td>
+                <td>23</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>李四</td>
+                <td>28</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>王五</td>
+                <td>25</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>张伟</td>
+                <td>24</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
