@@ -2467,7 +2467,7 @@ BOM        没有兼容问题(完全不兼容) -->
 
 
 <!-- 表格排序 -->
-<html lang="en">
+<!-- <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
@@ -2475,6 +2475,19 @@ BOM        没有兼容问题(完全不兼容) -->
         window.onload = function () {
             var oTab = document.getElementById('tab1');
             var oBtn = document.getElementById('btn1');
+
+            oBtn.onclick = function () {
+                for(var i = 0; i<oTab.tBodies[0].rows.length, i++){
+                    arr[i]=oTab.tBodies[0].rows[i];
+                }
+                
+                arr.sort(function (tr1,tr2) {
+                    var n1 = parseInt(tr1.cells[0].innerHTML);
+                    var n2 = parseInt(tr2.cells[0].innerHTML);
+
+                    return n1
+                })
+            }
         }
     </script>
 </head>
@@ -2521,4 +2534,4 @@ BOM        没有兼容问题(完全不兼容) -->
         </tbody>
     </table>
 </body>
-</html>
+</html> -->
