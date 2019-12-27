@@ -2409,7 +2409,7 @@ BOM        没有兼容问题(完全不兼容) -->
 </body>
 </html> -->
 
-
+<!-- fkjasfhkajsfhfhsjkhfkfsfkjksfhfskdhkfhksahfk -->
 <!-- 排序 -->
 <!-- <!DOCTYPE html>
 <html lang="en">
@@ -2535,3 +2535,113 @@ BOM        没有兼容问题(完全不兼容) -->
     </table>
 </body>
 </html> -->
+
+
+
+
+<!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
+<!-- 学习17  JS运动基础 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            top: 50px;
+            left: 0px;
+        }
+    </style>
+    <script>
+        function startMove() {
+            var oDiv = document.getElementById('div1');
+            clearInterval(timer);
+            timer=setInterval(function () {
+                var speed = 1;
+
+                if(oDiv.offsetLeft==300){
+                    oDiv.style.left = oDiv.offsetLeft + 10 + 'px';
+                }
+                oDiv.style.left=oDiv.offsetLeft+speed+'px';
+            },30);
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="开始运动" id="btn1" onclick="startMove()">
+    <div id="div1"></div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 150px;
+            height: 200px;
+            background: green;
+            position: absolute;
+            left: -150px;
+        }
+        #div1 span{
+            position: absolute;
+            width: 20px;
+            height: 60px;
+            line-height: 20px;
+            background: blue;
+            right: -20px;
+            top: 70px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var oDiv = document.getElementById('div1');
+
+            oDiv.onmouseover=function(){
+                startMove(0); 
+            }
+
+            oDiv.onmouseout = function () {
+                startMove(-150); 
+            }
+        };
+
+        var timer = null;
+
+        function startMove(speed,iTarget) {
+            var oDiv = document.getElementById('div1');
+
+            clearInterval(timer);
+            timer=setInterval(function(){
+                var speed = 0;
+
+                if(oDiv.offsetLeft>iTarget){
+                    speed = -10;
+                }else{
+                    speed = 10;
+                }
+                if(oDiv.offsetLeft==iTarget){
+                    clearInterval(timer);
+                }else{
+                    oDiv.style.left=oDiv.offsetLeft+speed+'px';
+                }
+            },30);
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <span>分享到</span>
+    </div>
+</body>
+</html>
+
+
