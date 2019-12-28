@@ -2578,7 +2578,7 @@ BOM        没有兼容问题(完全不兼容) -->
 </html> -->
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2616,7 +2616,7 @@ BOM        没有兼容问题(完全不兼容) -->
 
         var timer = null;
 
-        function startMove(speed,iTarget) {
+        function startMove(iTarget) {
             var oDiv = document.getElementById('div1');
 
             clearInterval(timer);
@@ -2641,6 +2641,103 @@ BOM        没有兼容问题(完全不兼容) -->
     <div id="div1">
         <span>分享到</span>
     </div>
+</body>
+</html> -->
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+            filter: alpha(opacity： 30);
+            opacity: 0.3;
+        }
+    </style>
+
+    <script>
+        window.onload = function ()
+        {
+            var oDiv = document.getElementById('div1');
+
+            oDiv.onmouseover=function ()
+            {
+                startMove(1000);
+            };
+            oDiv.onmouseout=function ()
+            {
+                startMove(30);
+            }
+        }
+
+        var alpha = 30;
+        var timer=null;
+        
+        function startMove(iTarget)
+        {
+            var oDiv = document.getElementById('div1');
+
+            clearInterval(timer);
+            timer=setInterval(function () {
+                var speed = 0;
+                if(alpha<iTarget)
+                {
+                    speed = 1;
+                }else
+                {
+                    speed=-1;
+                }
+                if(alpha==iTarget)
+                {
+                    clearInterval(timer);
+                }
+                else
+                {
+                    alpha+=speed;
+
+                    oDiv.style.filter='alpha(opacity:'+alpha+')';
+                    oDiv.style.opacity=alpha/100;
+                }
+            },30);
+        }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 0px;
+            top: 50px;
+        }
+    </style>
+    <script>
+        function startMove(){
+            setInterval
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="开始运动" />
+    <div id="div1"></div>
 </body>
 </html>
 
